@@ -279,6 +279,7 @@ def save_review(request,pid):
 
 # User Dashboard
 import calendar
+@login_required
 def my_dashboard(request):
 	orders=CartOrder.objects.annotate(month=ExtractMonth('order_dt')).values('month').annotate(count=Count('id')).values('month','count')
 	monthNumber=[]
